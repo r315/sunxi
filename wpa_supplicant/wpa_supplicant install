@@ -1,0 +1,29 @@
+dpkg -i *.deb
+
+#nano /etc/dbus-1/wpa_supplicant.conf
+
+ctrl_interface=/var/run/wpa_supplicant
+
+network={
+        ssid="sol"
+        proto=RSN WPA
+        key_mgmt=WPA-PSK
+        psk="semsol14"
+        pairwise=CCMP TKIP
+        group=CCMP TKIP
+}
+
+
+# apt-get install samba
+# mount /dev/nanda /mnt/flash/		;use flash as storage
+# net usershare add data /mnt/flash "Share data" everyone:F guest_ok=y
+# chmod 0777 /mnt/flash/
+# net usershare info --long
+
+
+set LOCALES
+# export LANG=en_EN.UTF-8
+# 	dpkg-reconfigure locales
+
+
+

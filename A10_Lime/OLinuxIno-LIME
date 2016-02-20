@@ -1,0 +1,60 @@
+A10 Server
+
+TODO:
+ lcd suspend
+ ip on desktop
+
+user	pass
+root	olimex
+olimex	olimex
+xhmr	hugoreis
+
+---------SSH Access-----------
+ssh root@192.168.1.78
+Pass: olimex
+
+---------mySql--------------
+install
+$apt-get install mysql-server
+
+nano /etc/mysql/my.cnf
+bind-address=YOUR-SERVER-IP	
+
+check
+$service --status-all
+$apt-cache show mysql-server | grep version
+
+mysql -u root@localhost
+user: root
+pass: mydatabase
+
+mysql -u dbuser@localhost
+user: dbuser
+pass: dbuser
+
+
+------- criar rootfs de sdcard------
+em outra maquina (ou boot from nand)
+$ cd /media/hmr/idsdcard/
+$ sudo tar cvpzf rootfs.tar.gz --exclude=rootfs.tar.gz *
+
+
+------- instalar na nand------------
+seguir tutorial de cubieboard
+
+copiar rootfs:
+$ mount /dev/mmcblk0p2 /mnt/rootfs
+$ tar xvfz rootfs.tar.gz -C /mnt/rootfs
+
+copiar boot files (script.bin, uEnv.txt, uImage)
+$ mount /dev/mmcblk0p1 /mnt/bootfs
+$ cd /mnt/bootfs
+$ cp * /mnt/rootfs/boot
+
+------------Remote access----------
+client: rdesktop
+server: xrdp
+
+
+
+

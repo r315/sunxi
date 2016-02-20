@@ -1,0 +1,2 @@
+bootargs=console ttyS0,115200 root=/dev/mmcblk0p2 rootwait sunxi_fb_mem_reserve=30 loglevel=8 panic=10
+

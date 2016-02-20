@@ -1,0 +1,719 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<link rel="stylesheet" type="text/css" href="A10%20Nand%20booting_files/index.css">
+	<script src="A10%20Nand%20booting_files/analytics.js" async=""></script><script type="text/javascript" src="A10%20Nand%20booting_files/script.js"></script>
+	<script type="text/javascript" src="A10%20Nand%20booting_files/theme.js"></script>
+	<script type="text/javascript"><!-- // --><![CDATA[
+		var smf_theme_url = "/forum/Themes/Minimalistic";
+		var smf_default_theme_url = "/forum/Themes/default";
+		var smf_images_url = "/forum/Themes/Minimalistic/images";
+		var smf_scripturl = "https://www.olimex.com/forum/index.php";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+		var ajax_notification_text = "Loading...";
+		var ajax_notification_cancel_text = "Cancel";
+	// ]]></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="A10 Nand booting">
+	<title>A10 Nand booting</title>
+	<link rel="canonical" href="https://www.olimex.com/forum/index.php?topic=3251.0">
+	<link rel="help" href="https://www.olimex.com/forum/index.php?action=help">
+	<link rel="search" href="https://www.olimex.com/forum/index.php?action=search">
+	<link rel="contents" href="https://www.olimex.com/forum/index.php">
+	<link rel="alternate" type="application/rss+xml" title="Olimex Support Forum - RSS" href="https://www.olimex.com/forum/index.php?type=rss;action=.xml">
+	<link rel="prev" href="https://www.olimex.com/forum/index.php?topic=3251.0;prev_next=prev">
+	<link rel="next" href="https://www.olimex.com/forum/index.php?topic=3251.0;prev_next=next">
+	<link rel="index" href="https://www.olimex.com/forum/index.php?board=3.0">
+		<script type="text/javascript" src="A10%20Nand%20booting_files/captcha.js"></script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-51756834-1', 'olimex.com');
+		ga('send', 'pageview');
+	</script>
+
+</head>
+<body>
+	<div class="user_bar">
+		<div class="user_bar_inner" style="width: 1100px">
+			<div class="user_bar_content">
+				<div class="floatleft">
+				Welcome,  <a href="https://www.olimex.com/forum/index.php?action=profile"><b>Guest</b></a>
+				</div> 
+				<div class="floatright">
+				<a href="https://www.olimex.com/forum/index.php?action=login">Login</a> or <a href="https://www.olimex.com/forum/index.php?action=register">Register</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="logo">
+		<div class="logo_inner" style="width: 1100px">
+			<div class="logo_content">
+				<div class="logo_image">
+				<a href="https://www.olimex.com/"><img src="A10%20Nand%20booting_files/smflogo.png" alt="Olimex Support Forum"></a>
+				</div>
+				
+				<div class="logo_search">
+					<div class="floatright">
+						<form id="search_form" action="https://www.olimex.com/forum/index.php?action=search2" method="post" accept-charset="UTF-8">
+							<input name="search" class="input_text" type="text">&nbsp;
+							<input name="submit" value="Search" class="button_submit" type="submit">
+							<input name="advanced" value="0" type="hidden">
+											<input name="topic" value="3251" type="hidden">				</form>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="nav_bar">
+		<div class="nav_bar_inner" style="width: 1100px">
+			<div class="nav_bar_content">
+				
+				
+				
+					<div class="nav_bar_item active " id="button_home">	
+					<a class="nav_bar_item_link active " href="https://www.olimex.com/forum/index.php">						
+							Home
+					</a>
+					</div>
+				
+				
+				
+				
+				
+					<div class="nav_bar_item" id="button_help">	
+					<a class="nav_bar_item_link" href="https://www.olimex.com/forum/index.php?action=help">						
+							Help
+					</a>
+					</div>
+				
+				
+				
+				
+				
+					<div class="nav_bar_item" id="button_search">	
+					<a class="nav_bar_item_link" href="https://www.olimex.com/forum/index.php?action=search">						
+							Search
+					</a>
+					</div>
+				
+				
+				
+				
+				
+					<div class="nav_bar_item" id="button_login">	
+					<a class="nav_bar_item_link" href="https://www.olimex.com/forum/index.php?action=login">						
+							Login
+					</a>
+					</div>
+				
+				
+				
+				
+				
+					<div class="nav_bar_item" id="button_register">	
+					<a class="nav_bar_item_link" href="https://www.olimex.com/forum/index.php?action=register">						
+							Register
+					</a>
+					</div>
+				
+				
+				
+			</div>
+		</div>
+	</div>
+			
+			
+<div id="wrapper" style="width: 1100px"> 
+	
+	<div id="content_section"><div class="frame">
+		<div id="main_content_section">
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://www.olimex.com/forum/index.php"><span>Olimex Support Forum</span></a> »
+			</li>
+			<li>
+				<a href="https://www.olimex.com/forum/index.php#c1"><span>OLinuXino Android / Linux boards  and System On Modules</span></a> »
+			</li>
+			<li>
+				<a href="https://www.olimex.com/forum/index.php?board=3.0"><span>A10</span></a> »
+			</li>
+			<li class="last">
+				<a href="https://www.olimex.com/forum/index.php?topic=3251.0"><span>A10 Nand booting</span></a>
+			</li>
+		</ul>
+	</div>
+			<a id="top"></a>
+			<a id="msg13631"></a>
+			<div class="pagesection">
+				<div class="nextlinks"><a href="https://www.olimex.com/forum/index.php?topic=3251.0;prev_next=prev#new">« previous</a> <a href="https://www.olimex.com/forum/index.php?topic=3251.0;prev_next=next#new">next »</a></div>
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://www.olimex.com/forum/index.php?action=printpage;topic=3251.0" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+			</div>
+			<div id="forumposts">
+				<div class="cat_bar">
+					<h3 class="catbg">
+						<img src="A10%20Nand%20booting_files/normal_post.gif" alt="" align="bottom">
+						<span id="author">Author</span>
+						Topic: A10 Nand booting &nbsp;(Read 3022 times)
+					</h3>
+				</div>
+				<form action="https://www.olimex.com/forum/index.php?action=quickmod2;topic=3251.0" method="post" accept-charset="UTF-8" name="quickModForm" id="quickModForm" style="margin: 0;" onsubmit="return oQuickModify.bInEditMode ? oQuickModify.modifySave('228fae51c2539d82243502295fcaaf16', 'c22a00dd') : false">
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://www.olimex.com/forum/index.php?action=profile;u=5054" title="View the profile of scott-alex">scott-alex</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_13631_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="A10%20Nand%20booting_files/star.gif" alt="*"></li>
+								<li class="postcount">Posts: 5</li>
+								<li class="karma">Karma: +0/-0</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="A10%20Nand%20booting_files/xx.gif" alt="">
+									</div>
+									<h5 id="subject_13631">
+										<a href="https://www.olimex.com/forum/index.php?topic=3251.msg13631#msg13631" rel="nofollow">A10 Nand booting</a>
+									</h5>
+									<div class="smalltext">« <strong> on:</strong> May 25, 2014, 02:33:29 PM »</div>
+									<div id="msg_13631_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_13631">I'm trying to set up the A10 
+Lime board (with Nand) to boot from Nand. I can already boot from SD 
+card. I would like to erase the existing Nand partitions and just uses a
+ BOOT and ROOTFS partition. I have experimented with nand-part and can 
+partition but can not find a working article on the correct file to put 
+into the BOOT partition. I have tried many variations on u-boot, 
+boot.axf, script.bin etc but can not get a working system. <br>There are also articles that seem to be working on replacing boot0/1 with a new version of u-boot?<br><br>I
+ can across this article that also details how to make a live suit image
+ but that failed with a make error when following the instructions:<br><br>Article: <a href="http://linux-sunxi.org/BSP" class="bbc_link" target="_blank">http://linux-sunxi.org/BSP</a><br><br>scott@armdev:~/sunxi-bsp$ ./configure a10-olinuxino-lime<br>a10-olinuxino-lime configured. Now run `make`<br>scott@armdev:~/sunxi-bsp$ make<br>mkdir -p /home/scott/sunxi-bsp/build/a10-olinuxino-lime-u-boot<br>make
+ -C u-boot-sunxi a10-olinuxino-lime_config 
+O=/home/scott/sunxi-bsp/build/a10-olinuxino-lime-u-boot 
+CROSS_COMPILE=arm-linux-gnueabihf- -j4<br>make[1]: Entering directory `/home/scott/sunxi-bsp/u-boot-sunxi'<br>make: *** No rule to make target `a10-olinuxino-lime_config'.&nbsp; Stop.<br>make[1]: *** [a10-olinuxino-lime_config] Error 1<br>make[1]: Leaving directory `/home/scott/sunxi-bsp/u-boot-sunxi'<br>make: *** [/home/scott/sunxi-bsp/build/a10-olinuxino-lime-u-boot/include/config.h] Error 2<br><br><br>Any help would be much appreciated.<br><br></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_13631">
+								« <em>Last Edit: May 25, 2014, 06:16:58 PM by scott-alex</em> »
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="A10%20Nand%20booting_files/ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg13634"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://www.olimex.com/forum/index.php?action=profile;u=2126" title="View the profile of JohnS">JohnS</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_13634_extra_info">
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="A10%20Nand%20booting_files/star.gif" alt="*"><img src="A10%20Nand%20booting_files/star.gif" alt="*"><img src="A10%20Nand%20booting_files/star.gif" alt="*"><img src="A10%20Nand%20booting_files/star.gif" alt="*"><img src="A10%20Nand%20booting_files/star.gif" alt="*"></li>
+								<li class="postcount">Posts: 1226</li>
+								<li class="karma">Karma: +27/-39</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="A10%20Nand%20booting_files/xx.gif" alt="">
+									</div>
+									<h5 id="subject_13634">
+										<a href="https://www.olimex.com/forum/index.php?topic=3251.msg13634#msg13634" rel="nofollow">Re: A10 Nand booting</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #1 on:</strong> May 25, 2014, 05:12:49 PM »</div>
+									<div id="msg_13634_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_13634">Check the makefile etc to see if you're using the wrong target name or it needs upper/lower case different or such like.<br><br>And whether it's an old file that needs changing...<br><br>John</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_13634">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="A10%20Nand%20booting_files/ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg13694"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://www.olimex.com/forum/index.php?action=profile;u=5054" title="View the profile of scott-alex">scott-alex</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_13694_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="A10%20Nand%20booting_files/star.gif" alt="*"></li>
+								<li class="postcount">Posts: 5</li>
+								<li class="karma">Karma: +0/-0</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="A10%20Nand%20booting_files/xx.gif" alt="">
+									</div>
+									<h5 id="subject_13694">
+										<a href="https://www.olimex.com/forum/index.php?topic=3251.msg13694#msg13694" rel="nofollow">Re: A10 Nand booting</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #2 on:</strong> May 28, 2014, 04:37:18 PM »</div>
+									<div id="msg_13694_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_13694">Managed to get this working in the end by compiling the lichee-dev version of u-boot. That supports band flash booting.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_13694">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="A10%20Nand%20booting_files/ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg14674"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://www.olimex.com/forum/index.php?action=profile;u=2647" title="View the profile of pepahajek">pepahajek</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_14674_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="A10%20Nand%20booting_files/star.gif" alt="*"></li>
+								<li class="postcount">Posts: 2</li>
+								<li class="karma">Karma: +0/-0</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="A10%20Nand%20booting_files/xx.gif" alt="">
+									</div>
+									<h5 id="subject_14674">
+										<a href="https://www.olimex.com/forum/index.php?topic=3251.msg14674#msg14674" rel="nofollow">Re: A10 Nand booting</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #3 on:</strong> July 20, 2014, 06:00:08 PM »</div>
+									<div id="msg_14674_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_14674">Hi,<br><br>I have been 
+successful to boot from nand on LIME board. This advance is based on 
+cubian nandinstall tool for similar board with a10 - cubieboard. I used 
+bootloader and partitioning from cubian-nandinstall.<br><br>The board must be booted from SD card. I used debian image prepared by olimex - <a href="https://docs.google.com/file/d/0B-bAEPML8fwlamRKQzl1N0M4THc/edit" class="bbc_link" target="_blank">https://docs.google.com/file/d/0B-bAEPML8fwlamRKQzl1N0M4THc/edit</a> <br><br>Download archive with kernel and bootloader<br><br><div class="codeheader">Code: <a href="javascript:void(0);" onclick="return smfSelectText(this);" class="codeoperation">[Select]</a></div><pre style="margin: 0; padding: 0;"><code class="bbc_code">wget http://pepa.hovnet.cz/wiki/files/lime-nand-install.tar.gz<br>tar zxf lime-nand-install.tar.gz<br>cd lime-nand-install</code></pre><br>Create partition table. There are two partitions nanda (1MB) and nandb (3983MB) after reboot.<br><br><div class="codeheader">Code: <a href="javascript:void(0);" onclick="return smfSelectText(this);" class="codeoperation">[Select]</a></div><pre style="margin: 0; padding: 0;"><code class="bbc_code">tar -xzOf cubian_nand.gz | dd of=/dev/nand<br>reboot</code></pre><br>Partitions formating. mkfs.vfat is in dosfstools package.<br><br><div class="codeheader">Code: <a href="javascript:void(0);" onclick="return smfSelectText(this);" class="codeoperation">[Select]</a></div><pre style="margin: 0; padding: 0;"><code class="bbc_code">mkfs.vfat /dev/nanda<br>mkfs.ext4 /dev/nandb</code></pre><br>In case of need is possible to resize nand partition<br><br><div class="codeheader">Code: <a href="javascript:void(0);" onclick="return smfSelectText(this);" class="codeoperation">[Select]</a></div><pre style="margin: 0; padding: 0;"><code class="bbc_code">resize2fs /dev/nandb</code></pre><br>Mounting partitions to current filesystem<br><br><div class="codeheader">Code: <a href="javascript:void(0);" onclick="return smfSelectText(this);" class="codeoperation">[Select]</a></div><pre style="margin: 0; padding: 0;"><code class="bbc_code">mkdir /mnt/bootfs<br>mkdir /mnt/rootfs<br>mount /dev/nanda /mnt/bootfs/<br>mount /dev/nandb /mnt/rootfs/<br></code></pre><br>bootloader and kernel instalation<br><br><div class="codeheader">Code: <a href="javascript:void(0);" onclick="return smfSelectText(this);" class="codeoperation">[Select]</a></div><pre style="margin: 0; padding: 0;"><code class="bbc_code">rsync -avc lime-nand-install/bootloader/* /mnt/bootfs/<br>rsync -avc lime-nand-install/boot /mnt/rootfs/</code></pre><br>Kernel<br><br>lime-nand-install.tar.gz
+ archive contain exactly same kernel as in the tutorial from olimex 
+blog. There is only different in NAND support straight in kernel, not in
+ module.<br><br><div class="codeheader">Code: <a href="javascript:void(0);" onclick="return smfSelectText(this);" class="codeoperation">[Select]</a></div><pre style="margin: 0; padding: 0;"><code class="bbc_code">debian@debian-armhf:~$ zgrep NAND /proc/config.gz<br>CONFIG_SUNXI_NAND_PARTITION=y<br>CONFIG_SUNXI_NAND=y<br>CONFIG_SUNXI_NAND_COMPAT_DEV=y<br># CONFIG_SUNXI_NAND_TEST is not set</code></pre><br>If there are special requirement for the kernel, is possible to choose from several tutorials how to compile own kernel.<br><br>&nbsp; &nbsp; <a href="http://eewiki.net/display/linuxonarm/A10-OLinuXino-LIME#A10-OLinuXino-LIME-LinuxKernel" class="bbc_link" target="_blank">http://eewiki.net/display/linuxonarm/A10-OLinuXino-LIME#A10-OLinuXino-LIME-LinuxKernel</a><br>&nbsp; &nbsp; <a href="http://olimex.wordpress.com/2013/12/13/building-debian-linux-image-for-a10-olinuxino-lime-with-kernel-3-4-67/" class="bbc_link" target="_blank">http://olimex.wordpress.com/2013/12/13/building-debian-linux-image-for-a10-olinuxino-lime-with-kernel-3-4-67/</a><br>&nbsp; &nbsp; <a href="https://romanrm.net/a10/cross-compile-kernel" class="bbc_link" target="_blank">https://romanrm.net/a10/cross-compile-kernel</a><br><br>Root file system <br><br>Debian root file system is done by armhf.com and donwloaded from <a href="http://www.armhf.com/download/" class="bbc_link" target="_blank">http://www.armhf.com/download/</a> with “no kernel” at the bottom of the page. <br><br><div class="codeheader">Code: <a href="javascript:void(0);" onclick="return smfSelectText(this);" class="codeoperation">[Select]</a></div><pre style="margin: 0; padding: 0;"><code class="bbc_code">wget http://s3.armhf.com/dist/basefs/debian-wheezy-7.5-armhf.com-20140603.tar.xz&nbsp; <br>tar xf debian-wheezy-7.5-armhf.com-20140603.tar.xz -C /mnt/rootfs/</code></pre><br>Allow to login via serial line. At the end of file /mnt/rootfs/etc/inittab add row<br><br><div class="codeheader">Code: <a href="javascript:void(0);" onclick="return smfSelectText(this);" class="codeoperation">[Select]</a></div><pre style="margin: 0; padding: 0;"><code class="bbc_code">T0:2345:respawn:/sbin/getty -L ttyS0 115200 linux</code></pre><br>Turn off linux from SD card (poweroff), unplug SD card and system should boot from NAND. Login and possword is debian/debian.<br><br></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_14674">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="A10%20Nand%20booting_files/ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg15167"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://www.olimex.com/forum/index.php?action=profile;u=5407" title="View the profile of deepe">deepe</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_15167_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="A10%20Nand%20booting_files/star.gif" alt="*"></li>
+								<li class="postcount">Posts: 3</li>
+								<li class="karma">Karma: +0/-0</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="A10%20Nand%20booting_files/xx.gif" alt="">
+									</div>
+									<h5 id="subject_15167">
+										<a href="https://www.olimex.com/forum/index.php?topic=3251.msg15167#msg15167" rel="nofollow">Re: A10 Nand booting</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #4 on:</strong> August 26, 2014, 12:07:59 PM »</div>
+									<div id="msg_15167_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_15167">Hi @pepahajek,<br>your solution works great. Can not wait to fully open source solution booting from NAND.<br><br>Once again great job, Thank you.<br><br>Regards,<br>Deepe</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_15167">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="A10%20Nand%20booting_files/ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg16078"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://www.olimex.com/forum/index.php?action=profile;u=5602" title="View the profile of cprcpr">cprcpr</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_16078_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="A10%20Nand%20booting_files/star.gif" alt="*"></li>
+								<li class="postcount">Posts: 2</li>
+								<li class="karma">Karma: +0/-0</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="A10%20Nand%20booting_files/xx.gif" alt="">
+									</div>
+									<h5 id="subject_16078">
+										<a href="https://www.olimex.com/forum/index.php?topic=3251.msg16078#msg16078" rel="nofollow">Re: A10 Nand booting</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #5 on:</strong> October 23, 2014, 03:43:39 PM »</div>
+									<div id="msg_16078_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_16078">Hello I am trying to follow the steps of <em>@pepahajek</em>. I have the Olinuxino A10 lime booting from the NAND as <em>@pepahajek</em> explained but my problem is that I have the screen flickering always (like in this video but all the time:<em><a href="https://www.youtube.com/watch?v=1NC2mJ6tIVE" class="bbc_link" target="_blank">https://www.youtube.com/watch?v=1NC2mJ6tIVE</a></em>),
+ in higher or lower frequency but flickering since it boots. I tried 
+with different power supply and I still have the same problem. I tried 
+xrandr command but it says can't open display. When I try to create the <span class="bbc_u">Xorg.conf</span> file (it is not in /etc/X11) using X -configure, it says "<em>No devices to configure. Configuration failed.</em>" but it shows:<br>"<em>List of video drivers:<br>&nbsp; &nbsp; nouveau<br>&nbsp; &nbsp; mach64<br>&nbsp; &nbsp; ati<br>&nbsp; &nbsp; radeon<br>&nbsp; &nbsp; r128<br>&nbsp; &nbsp; fbdev<br>&nbsp; &nbsp; vesa</em>"<br>I've also tried lspci command and it shows:<br>"pcilib: Cannot open /proc/bus/pci<br>lspci: Cannot find any working access method."<br>I googled this and I didn't get any solution.<br>I have also read this post: <a href="https://www.olimex.com/forum/index.php?topic=2756.0" class="bbc_link" target="_blank">https://www.olimex.com/forum/index.php?topic=2756.0</a> in the last reply @jpc says:<br>"<em>The flickering can be fixed by enabling the SCALER module in the HDMI pipeline.</em>" I don't know what it means and I can't find any module called SCALER and I don't know what is the HDMI pipeline.<br><br><strong>Any idea of why I am getting this flickering screen?</strong><br><br>PS: I am using a A10 Olinuxino Lime 4gb and I followed the steps that @pepahajek posted</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_16078">
+								« <em>Last Edit: October 23, 2014, 04:41:23 PM by cprcpr</em> »
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="A10%20Nand%20booting_files/ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg16090"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://www.olimex.com/forum/index.php?action=profile;u=4812" title="View the profile of MBR">MBR</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_16090_extra_info">
+								<li class="postgroup">Sr. Member</li>
+								<li class="stars"><img src="A10%20Nand%20booting_files/star.gif" alt="*"><img src="A10%20Nand%20booting_files/star.gif" alt="*"><img src="A10%20Nand%20booting_files/star.gif" alt="*"><img src="A10%20Nand%20booting_files/star.gif" alt="*"></li>
+								<li class="postcount">Posts: 250</li>
+								<li class="karma">Karma: +16/-0</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="A10%20Nand%20booting_files/xx.gif" alt="">
+									</div>
+									<h5 id="subject_16090">
+										<a href="https://www.olimex.com/forum/index.php?topic=3251.msg16090#msg16090" rel="nofollow">Re: A10 Nand booting</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #6 on:</strong> October 23, 2014, 11:17:45 PM »</div>
+									<div id="msg_16090_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_16090"><div class="quoteheader"><div class="topslice_quote"><a href="https://www.olimex.com/forum/index.php?topic=3251.msg16078#msg16078">Quote from: cprcpr on October 23, 2014, 03:43:39 PM</a></div></div><blockquote class="bbc_standard_quote">I've also tried lspci command and it shows:<br>"pcilib: Cannot open /proc/bus/pci<br>lspci: Cannot find any working access method."<br></blockquote><div class="quotefooter"><div class="botslice_quote"></div></div><br>There is no PCI bus in A10, so the <tt class="bbc_tt">lspci</tt>
+ command obviously cannot work. And the config file autogeneration is 
+probably too PCI-centric and doesn't work well without the device 
+enumeration. But, IIRC, you don't need to make/modify <tt class="bbc_tt">Xorg.conf</tt> anyway, because the resolution is set in the <tt class="bbc_tt">FEX</tt> file.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_16090">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="A10%20Nand%20booting_files/ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg16091"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://www.olimex.com/forum/index.php?action=profile;u=5602" title="View the profile of cprcpr">cprcpr</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_16091_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="A10%20Nand%20booting_files/star.gif" alt="*"></li>
+								<li class="postcount">Posts: 2</li>
+								<li class="karma">Karma: +0/-0</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="A10%20Nand%20booting_files/xx.gif" alt="">
+									</div>
+									<h5 id="subject_16091">
+										<a href="https://www.olimex.com/forum/index.php?topic=3251.msg16091#msg16091" rel="nofollow">Re: A10 Nand booting</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #7 on:</strong> October 24, 2014, 11:06:20 AM »</div>
+									<div id="msg_16091_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_16091">okay, Thank you for the answer MBR.<br>I've tried the Wheezy 7.2 as well and I have the same problem.<br>But where is the FEX file that you talk about?<br>And do you know what is the SCALER module in the HDMI pipeline?<br>Thank you<br>EDIT:<br>It's working. I activated the fb0_hdmi_scaler_mode in the script.bin <img src="A10%20Nand%20booting_files/smiley.gif" alt=":)" title="Smiley" class="smiley"></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_16091">
+								« <em>Last Edit: November 04, 2014, 11:47:16 AM by cprcpr</em> »
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="A10%20Nand%20booting_files/ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				</form>
+			</div>
+			<a id="lastPost"></a>
+			<div class="pagesection">
+				
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://www.olimex.com/forum/index.php?action=printpage;topic=3251.0" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+				<div class="nextlinks_bottom"><a href="https://www.olimex.com/forum/index.php?topic=3251.0;prev_next=prev#new">« previous</a> <a href="https://www.olimex.com/forum/index.php?topic=3251.0;prev_next=next#new">next »</a></div>
+			</div>
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://www.olimex.com/forum/index.php"><span>Olimex Support Forum</span></a> »
+			</li>
+			<li>
+				<a href="https://www.olimex.com/forum/index.php#c1"><span>OLinuXino Android / Linux boards  and System On Modules</span></a> »
+			</li>
+			<li>
+				<a href="https://www.olimex.com/forum/index.php?board=3.0"><span>A10</span></a> »
+			</li>
+			<li class="last">
+				<a href="https://www.olimex.com/forum/index.php?topic=3251.0"><span>A10 Nand booting</span></a>
+			</li>
+		</ul>
+	</div>
+			<div id="moderationbuttons"></div>
+			<div class="plainbox" id="display_jump_to"><label class="smalltext" for="display_jump_to_select">Jump to:</label> <select name="display_jump_to_select" id="display_jump_to_select" onfocus="grabJumpToContent();"><option selected="selected" value="?board=3.0">=&gt; A10</option></select>&nbsp;<input value="go" onclick="window.location.href = 'https://www.olimex.com/forum/index.php?board=3.0';" type="button"></div>
+		<br class="clear">
+				<script type="text/javascript" src="A10%20Nand%20booting_files/topic.js"></script>
+				<script type="text/javascript"><!-- // --><![CDATA[
+					var oQuickReply = new QuickReply({
+						bDefaultCollapsed: true,
+						iTopicId: 3251,
+						iStart: 0,
+						sScriptUrl: smf_scripturl,
+						sImagesUrl: "/forum/Themes/Minimalistic/images",
+						sContainerId: "quickReplyOptions",
+						sImageId: "quickReplyExpand",
+						sImageCollapsed: "collapse.gif",
+						sImageExpanded: "expand.gif",
+						sJumpAnchor: "quickreply"
+					});
+					if ('XMLHttpRequest' in window)
+					{
+						var oQuickModify = new QuickModify({
+							sScriptUrl: smf_scripturl,
+							bShowModify: true,
+							iTopicId: 3251,
+							sTemplateBodyEdit: '\n\t\t\t\t\t\t\t\t<div 
+id="quick_edit_body_container" style="width: 
+90%">\n\t\t\t\t\t\t\t\t\t<div id="error_box" style="padding: 4px;" 
+class="error"><' + '/div>\n\t\t\t\t\t\t\t\t\t<textarea class="editor" 
+name="message" rows="12" style="width: 100%; margin-bottom: 10px;" 
+tabindex="1">%body%<' + '/textarea><br />\n\t\t\t\t\t\t\t\t\t<input 
+type="hidden" name="c22a00dd" value="228fae51c2539d82243502295fcaaf16" 
+/>\n\t\t\t\t\t\t\t\t\t<input type="hidden" name="topic" value="3251" 
+/>\n\t\t\t\t\t\t\t\t\t<input type="hidden" name="msg" value="%msg_id%" 
+/>\n\t\t\t\t\t\t\t\t\t<div 
+class="righttext">\n\t\t\t\t\t\t\t\t\t\t<input type="submit" name="post"
+ value="Save" tabindex="2" onclick="return 
+oQuickModify.modifySave(\'228fae51c2539d82243502295fcaaf16\', 
+\'c22a00dd\');" accesskey="s" class="button_submit" />&nbsp;&nbsp;<input
+ type="submit" name="cancel" value="Cancel" tabindex="3" onclick="return
+ oQuickModify.modifyCancel();" class="button_submit" 
+/>\n\t\t\t\t\t\t\t\t\t<' + '/div>\n\t\t\t\t\t\t\t\t<' + '/div>',
+							sTemplateSubjectEdit: '<input type="text" style="width: 90%;" 
+name="subject" value="%subject%" size="80" maxlength="80" tabindex="4" 
+class="input_text" />',
+							sTemplateBodyNormal: '%body%',
+							sTemplateSubjectNormal: '<a 
+hr'+'ef="https://www.olimex.com/forum/index.php'+'?topic=3251.msg%msg_id%#msg%msg_id%"
+ rel="nofollow">%subject%<' + '/a>',
+							sTemplateTopSubject: 'Topic: %subject% &nbsp;(Read 3022 times)',
+							sErrorBorderStyle: '1px solid red'
+						});
+
+						aJumpTo[aJumpTo.length] = new JumpTo({
+							sContainerId: "display_jump_to",
+							sJumpToTemplate: "<label class=\"smalltext\" 
+for=\"%select_id%\">Jump to:<" + "/label> %dropdown_list%",
+							iCurBoardId: 3,
+							iCurBoardChildLevel: 0,
+							sCurBoardName: "A10",
+							sBoardChildLevelIndicator: "==",
+							sBoardPrefix: "=> ",
+							sCatSeparator: "-----------------------------",
+							sCatPrefix: "",
+							sGoButtonLabel: "go"
+						});
+
+						aIconLists[aIconLists.length] = new IconList({
+							sBackReference: "aIconLists[" + aIconLists.length + "]",
+							sIconIdPrefix: "msg_icon_",
+							sScriptUrl: smf_scripturl,
+							bShowModify: true,
+							iBoardId: 3,
+							iTopicId: 3251,
+							sSessionId: "228fae51c2539d82243502295fcaaf16",
+							sSessionVar: "c22a00dd",
+							sLabelIconList: "Message Icon",
+							sBoxBackground: "transparent",
+							sBoxBackgroundHover: "#ffffff",
+							iBoxBorderWidthHover: 1,
+							sBoxBorderColorHover: "#adadad" ,
+							sContainerBackground: "#ffffff",
+							sContainerBorder: "1px solid #adadad",
+							sItemBorder: "1px solid #ffffff",
+							sItemBorderHover: "1px dotted gray",
+							sItemBackground: "transparent",
+							sItemBackgroundHover: "#e0e0f0"
+						});
+					}
+				// ]]></script>
+			<script type="text/javascript"><!-- // --><![CDATA[
+				var verificationpostHandle = new 
+smfCaptcha("https://www.olimex.com/forum/index.php?action=verificationcode;vid=post;rand=9810c9dfbdb0027dde59f88784498d7b",
+ "post", 1);
+			// ]]></script>
+		</div>
+	</div></div>
+	<div id="footer_section"><div class="frame">
+		<ul class="reset">
+			<li>Theme designed by <b>CrimeS</b></li>
+			<li class="copyright">
+			<span class="smalltext" style="display: inline; visibility: visible; font-family: Verdana, Arial, sans-serif;"><a href="https://www.olimex.com/forum/index.php?action=credits" title="Simple Machines Forum" target="_blank" class="new_win">SMF 2.0.2</a> |
+ <a href="http://www.simplemachines.org/about/smf/license.php" title="License" target="_blank" class="new_win">SMF © 2011</a>, <a href="http://www.simplemachines.org/" title="Simple Machines" target="_blank" class="new_win">Simple Machines</a>
+			</span></li>
+			<li><a id="button_xhtml" href="http://validator.w3.org/check?uri=referer" target="_blank" class="new_win" title="Valid XHTML 1.0!"><span>XHTML</span></a></li>
+			<li><a id="button_rss" href="https://www.olimex.com/forum/index.php?action=.xml;type=rss" class="new_win"><span>RSS</span></a></li>
+			<li class="last"><a id="button_wap2" href="https://www.olimex.com/forum/index.php?wap2" class="new_win"><span>WAP2</span></a></li>
+		</ul>
+	</div></div>
+</div>
+</body></html>

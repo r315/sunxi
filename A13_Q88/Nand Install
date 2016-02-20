@@ -1,0 +1,115 @@
+Suporte para nand ainda não esta disponivel, passos seguintes criam 2 partiçoes na nand
+copia u-boot e kernel.
+ultimo passo configura u-boot para carregar uImage para a ram e arrancar, neste passo como o u-boot não 
+suporta nand o kernel bloqueia
+a solução tomada para este problema é arrancar de cartão SD mas passar como parametro ao kernel um rootfs na nand!
+
+
+
+/******** prerequires boot files from android image *********/
+Estes ficheiros foram obtidos instalando android na nand
+e de seguida extrai-los da partição nanda
+
+# mount /dev/nanda /mnt/bootfs && cd /mnt/bootfs/
+# cp -R * /some place/bootfs
+# cd /some place/bootfs/linux
+
+/* files needed */
+script.bin 
+drv_de.drv 
+font24.sft 
+boot.axf 
+linux/
+	linux.ini 
+  	uimage 
+	linux.bmp 
+	u-boot.bin 
+	uenv.txt 
+font32.sft 
+boot.ini 
+magic.bin 
+os_show/
+script0.bin 
+sprite/
+sprite.axf 
+vendor/
+
+
+/****** partitionate nand *********/
+
+/* get number o sectors of nand */
+# fdisk /dev/nand
+...
+Disk /dev/nand: 15.9 GB, 15938355200 bytes
+255 heads, 63 sectors/track, 1937 cylinders, total 31129600 sectors
+...
+
+/**** create partitions *****/
+# dd if=/dev/zero of=/dev/nand count=32768
+# ./nand-part -f a10 /dev/nand 2048 'boot 32768' 'root 31094784'
+# ./nand-part /dev/nand
+...
+partition  1: class =         DISK, name =         boot, partition start =     2048, partition size =    32768 user_type=0
+partition  2: class =         DISK, name =         root, partition start =    34816, partition size = 31094784 user_type=0
+
+# sync
+# mkfs.vfat /dev/nanda
+# mkfs.ext4 /dev/nandb
+# mount /dev/nanda /mnt/bootfs
+/* copy previous files to partition nanda
+# cp -R * /mnt/bootfs
+
+/******** configure u-boot enviroment **********/
+
+setenv loadkernel fatload nand0 0 0x48000000 /linux/uImage
+setenv loadscript fatload nand0 0 0x43000000 /script.bin
+setenv boot_normal bootm 48000000
+setenv bootcmd run setargs loadkernel loadscript boot_normal
+setenv machid 0x000010bb
+setenv nand_root /dev/nandb
+setenv panic 10
+setenv setargs setenv bootargs console=${console} root=${nand_root} init=${init} loglevel=${loglevel} rootwait pannic=${panic}
+env save
+boot
+
+/* kernel boot but hangs.... */
+
+
+/********boot from SD cart and rootfs on nand *********/
+on the root of sd card create file uEnv.txt and add:
+
+autoboot=run loadkernel && run setargs && true && bootm 0x48000000
+baudrate=115200
+boot_ram=saved_stdout=$stdout;setenv stdout nc;if iminfo 0x41000000; then true; setenv stdout $saved_stdout; source 0x41000000;else setenv stdout $saved_stdout;fi
+bootcmd=if run loadbootenv; then echo Loaded environment from ${bootenv};env import -t ${scriptaddr} ${filesize};fi;if test -n "${uenvcmd}"; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadbootscr; then echo Jumping to ${bootscr};source ${scriptaddr};fi;run autoboot;
+bootdelay=2
+bootenv=uEnv.txt
+bootm_size=0x10000000
+bootscr=boot.scr
+console=ttyS0,115200
+device=mmc
+ethaddr=02:87:09:01:5a:0e
+kernel=uImage
+loadbootenv=fatload $device $partition $scriptaddr ${bootenv} || ext2load $device $partition $scriptaddr boot/${bootenv} || ext2load $device $partition $scriptaddr ${bootenv}
+loadbootscr=fatload $device $partition $scriptaddr ${bootscr} || ext2load $device $partition $scriptaddr boot/${bootscr} ||ext2load $device $partition $scriptaddr ${bootscr}
+loadkernel=if bootpath=/boot/ && ext2load $device $partition 0x43000000 ${bootpath}${script} && ext2load $device $partition 0x48000000 ${bootpath}${kernel};then true; elif bootpath=/ && fatload $device $partition 0x43000000 ${script} && fatload $device $partition 0x48000000 ${kernel};then true; elif bootpath=/ && ext2load $device $partition 0x43000000 ${bootpath}${script} && ext2load $device $partition 0x48000000 ${bootpath}${kernel};then true; else false;fi
+loglevel=8
+panicarg=panic=10
+partition=0:1
+script=script.bin
+scriptaddr=0x44000000
+setargs=if test -z \\"$root\\"; then if test \\"$bootpath\\" = "/boot/"; then root="/dev/nanda rootwait"; else root="/dev/nandb rootwait"; fi; fi; setenv bootargs console=${console} root=${root} loglevel=${loglevel} ${panicarg} ${extraargs}
+stderr=serial
+stdin=serial
+stdout=serial
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+Create sd card with Debian
+http://linux-sunxi.org/FirstSteps
+
+########## make Uboot ##########
+cd u-boot-sunxi/
+grep sunxi boards.cfg | awk '{print $7}'			;view  available targets
+make CROSS_COMPILE=arm-linux-gnueabihf- {TARGET}_config 	;select a target
+make CROSS_COMPILE=arm-linux-gnueabihf-				;make
+
+
+
+
+############ make kernel ###############
+$ cd linux-sunxi/
+$ make ARCH=arm a13_defconfig
+$ make ARCH=arm menuconfig
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- uImage
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=out modules
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=out modules_install
+
+
+
+###### Prepair sdcard ###########
+$ sudo fdisk /dev/mmcblk0
+p
+        Device Boot      Start         End      Blocks   Id  System
+/dev/mmcblk0p1            2048       34815       16384   83  Linux
+/dev/mmcblk0p2           34816     3842047     1903616   83  Linux
+w
+$ sudo mkfs.vfat /dev/mmcblk0p1
+$ sudo mkfs.ext3 /dev/mmcblk0p2
+
+
+
+/***** install u-boot sunxi into sdcard *****/
+$ cd u-boot-sunxi/
+$ sudo dd if=spl/sunxi-spl.bin of=/dev/mmcblk0 bs=1024 seek=8
+$ sudo dd if=u-boot.img of=/dev/mmcblk0 bs=1024 seek=40
+or
+$ sudo dd if=u-boot-sunxi-with-spl.bin of=/dev/mmcblk0 bs=1024 seek=8
+
+/**** copy kernel uImage to sdcard ****/
+$ cd linux-sunxi/
+$ sudo mount /dev/mmcblk0p1 /mnt
+$ cp arch/arm/boot/uImage /mnt
+
+/******* copy scripts ********/
+$ cd scripts/
+$ sudo cp script.bin /mnt
+$ sudo umount /mnt
+
+######### install debian rootfs ###########
+/**** copy debian into sdcard ****/
+cd Debian/
+$ wget http://hands.com/~lkcl/mele_debian_armhf_minimal.cpio.gz
+$ sudo mount /dev/mmcblk0p2 /mnt && cd /mnt
+$ gunzip -c ~/sunxi/Debian/mele_debian_armhf_minimal.cpio.gz | sudo cpio -i
+$ cd ~/sunxi/linux-sunxi
+$ sudo cp -a out/lib/modules/3.4.103+/ /mnt/lib/modules/
+$ cd && sudo umount /mnt
+/*** insert SD card and power on ***/
+login: root
+Password: password
+
+######### install Open WRT rootfs ###########
+$ mkdir tmp
+$ sudo mount -t ext4 openwrt-sunxi-root.ext4 tmp && cd tmp
+$ sudo mount /dev/mmcblk0p2 /mnt
+$ sudo cp -R * /mnt
+$ sudo umount /mnt && cd ..
+$ sudo umount tmp
+
+###### misc #######
+
+#boot.scr
+mkimage -C none -A arm -T script -d boot.cmd sdcard/boot.scr
+
+/***** remove root permisson from sdcard *****/
+sudo chmod -R 0777 /media/hmr/sdcard
+
+/**** set serial terminal on client ****/
+$ sudo apt-get install gtkterm
+$ sudo adduser $USER dialout
+alternative 
+$ sudo apt-get install screen
+$ screen /dev/ttyUSB0 115200
+
+/***** bibliotecas *****/
+sudo apt-get install libusb-1.0-0-dev uboot-mkimage pkg-config
+
+
+
+
+
+
+
