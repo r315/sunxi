@@ -54,6 +54,7 @@ $ cp * /mnt/rootfs/boot
 ------------Remote access----------
 client: rdesktop
 server: xrdp
+Module: console
 
 
 
